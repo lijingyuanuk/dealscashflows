@@ -32,7 +32,6 @@ urlpatterns = [
     url(r'^delete_deal$', delete_deal),
     url(r'^cash$', cash),
     url(r'^delete_cash$', delete_cash),
-
     
     url(r'^login/$', login),
     url(r'^logout/$', logout),
