@@ -11,12 +11,12 @@
 // http request with ajax
 // parms: parameter of request, requestMethod: GET or POST, cb: callback function for response.
 function ajaxRequest(url, parms, requestMethod, cb){
-    // 创建XMLHttpRequest对象
+    // Create XMLHttpRequest objects
     var createXMLHttpRequest = function() {
         var xmlHttpReq = null;
-        if (window.XMLHttpRequest) {// IE 7.0及以上版本和非IE的浏览器
+        if (window.XMLHttpRequest) {// IE 7.0 and later versions, non-IE browsers
             xmlHttpReq = new XMLHttpRequest();
-        } else {// IE 6.0及以下版本
+        } else {// IE 6.0 and older versions
             try {
                 xmlHttpReq = new ActiveXObject("MSXML2.XMLHTTP");
             }catch (e) {
