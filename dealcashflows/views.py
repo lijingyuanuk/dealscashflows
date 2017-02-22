@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 import StringIO
 
-import BeautifulSoup
 import time
-import xlwt
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render_to_response, get_object_or_404
@@ -87,51 +85,4 @@ def delete_cash(request):
     cash = Cashflow.objects.get(id=id)
     cash.delete()
     return JsonResponse({"ok": True})
-
-
-def login(request):
-    msg = ''
-    next_url = request.GET.get('next', '/')
-    if request.method == 'POST':
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        next_url = request.POST.get('next', '/')
-        user = auth.authenticate(username=username, password=password)
-        print username, password
-        if user is not None and user.is_active:
-            auth.login(request, user)
-            return HttpResponseRedirect(next_url)
-        else:
-            msg = u'username or password error'
-    return render_to_response('login.html', locals())
-
-
-def logout(request):
-    if request.user.is_authenticated():
-        auth.logout(request)
-    return HttpResponseRedirect("/")
-
-
-@login_required
-def password(request):
-    msg = ''
-    if request.method == 'POST':
-        password = request.POST.get('password', '')
-        password1 = request.POST.get('password1', '')
-        password2 = request.POST.get('password2', '')
-        user = request.user
-
-        if not user.check_password(password):
-            msg = u'old password error'
-
-        if password1 != password2:
-            msg = u'two passwords not the same'
-
-        if not msg:
-            user.set_password(password1)
-            user.save()
-            return HttpResponseRedirect('/login/')
-
-    return render_to_response('password.html', locals())
-
 
