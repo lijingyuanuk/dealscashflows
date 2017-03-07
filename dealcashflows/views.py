@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
 import StringIO
-<<<<<<< Updated upstream
-
-=======
-import BeautifulSoup
->>>>>>> Stashed changes
 import time
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
