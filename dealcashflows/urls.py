@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^index/$', index),
 
     url(r'^find_deal/$', find_deal),
+    url(r'^find_deal/$', find_deal),  
     url(r'^find_cash/$', find_cash),
     url(r'^deal$', deal),
     url(r'^delete_deal$', delete_deal),
